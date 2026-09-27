@@ -1,9 +1,15 @@
 import React from 'react';
-import { Phone, MessageCircle, Navigation } from 'lucide-react';
+import { Navigation, MapPin, Star } from 'lucide-react';
 import { salonData } from '../data/salonData';
 
 export default function MobileBottomBar() {
-  const whatsappUrl = `https://wa.me/${salonData.whatsappNumber}?text=${encodeURIComponent(salonData.whatsappDefaultMessage)}`;
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <aside
@@ -12,26 +18,6 @@ export default function MobileBottomBar() {
     >
       <div className="grid grid-cols-3 gap-2 max-w-md mx-auto">
         
-        {/* Call Action */}
-        <a
-          href={`tel:${salonData.phoneRaw}`}
-          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#2C221E] text-white hover:bg-[#3A2E29] transition-colors border border-white/10"
-        >
-          <Phone className="w-4 h-4 text-[#C58B7E] mb-1" />
-          <span className="text-[11px] font-semibold tracking-tight">Call Us</span>
-        </a>
-
-        {/* WhatsApp Action */}
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#25D366] text-white hover:opacity-95 transition-opacity"
-        >
-          <MessageCircle className="w-4 h-4 fill-current mb-1" />
-          <span className="text-[11px] font-bold tracking-tight">WhatsApp</span>
-        </a>
-
         {/* Directions Action */}
         <a
           href={salonData.mapDirectionsUrl}
@@ -40,7 +26,27 @@ export default function MobileBottomBar() {
           className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#F4E8D1] text-[#1A1412] hover:bg-white transition-colors"
         >
           <Navigation className="w-4 h-4 text-[#C5A059] mb-1" />
-          <span className="text-[11px] font-semibold tracking-tight">Directions</span>
+          <span className="text-[11px] font-bold tracking-tight">Directions</span>
+        </a>
+
+        {/* Location Action */}
+        <a
+          href="#location"
+          onClick={(e) => handleNavClick(e, '#location')}
+          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#2C221E] text-white hover:bg-[#3A2E29] transition-colors border border-white/10"
+        >
+          <MapPin className="w-4 h-4 text-[#C58B7E] mb-1" />
+          <span className="text-[11px] font-semibold tracking-tight">Location</span>
+        </a>
+
+        {/* Reviews Action */}
+        <a
+          href="#reviews"
+          onClick={(e) => handleNavClick(e, '#reviews')}
+          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#2C221E] text-white hover:bg-[#3A2E29] transition-colors border border-white/10"
+        >
+          <Star className="w-4 h-4 text-[#C5A059] fill-current mb-1" />
+          <span className="text-[11px] font-semibold tracking-tight">5.0 ★ Reviews</span>
         </a>
 
       </div>

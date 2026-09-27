@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, MapPin, Phone, Clock, Share2, Globe, MessageCircle } from 'lucide-react';
+import { Sparkles, MapPin, Clock, Share2, Globe, Star } from 'lucide-react';
 import { salonData } from '../data/salonData';
 
 export default function Footer() {
@@ -12,7 +12,7 @@ export default function Footer() {
     { name: 'Why Choose Us', href: '#why-us' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Reviews', href: '#reviews' },
-    { name: 'Contact & Directions', href: '#location' },
+    { name: 'Location & Hours', href: '#location' },
   ];
 
   const handleNavClick = (e, href) => {
@@ -33,36 +33,36 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center space-x-2">
               <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#FDFBF7]">
-                Elements
+                {salonData.shortName}
               </span>
               <Sparkles className="w-4 h-4 text-[#C5A059]" />
             </div>
 
-            <p className="text-xs uppercase tracking-[0.25em] text-[#C5A059] font-semibold -mt-2">
-              Luxury Salon & Spa
+            <p className="text-xs uppercase tracking-[0.2em] text-[#C5A059] font-semibold -mt-2">
+              {salonData.subtitle}
             </p>
 
             <p className="text-xs sm:text-sm text-[#E8C5BE]/80 leading-relaxed font-light">
-              Elevated beauty, hair grooming, and bridal experiences in Chittoor. Crafted for your personal care and grand occasions.
+              Quality haircutting, hair treatments, facial care, and grooming services in Chittoor. Crafted for your everyday care and style.
             </p>
 
             <div className="pt-2 flex items-center space-x-3 text-[#C5A059]">
-              <span className="text-xs font-semibold text-[#E8C5BE]/90">Follow Us:</span>
+              <span className="text-xs font-semibold text-[#E8C5BE]/90">Find Us Online:</span>
               <a
-                href={`https://wa.me/${salonData.whatsappNumber}`}
+                href={salonData.googleReviewsLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#2C221E] hover:bg-[#25D366] text-white transition-colors"
-                title="WhatsApp"
+                className="p-2 rounded-full bg-[#2C221E] hover:bg-[#C58B7E] text-white transition-colors"
+                title="Google Business Profile (5.0 ★)"
               >
-                <MessageCircle className="w-4 h-4 fill-current" />
+                <Star className="w-4 h-4 text-[#C5A059] fill-current" />
               </a>
               <a
                 href={salonData.mapDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#2C221E] hover:bg-[#C58B7E] text-white transition-colors"
-                title="Google Listing"
+                title="Google Maps Location"
               >
                 <Globe className="w-4 h-4" />
               </a>
@@ -97,26 +97,22 @@ export default function Footer() {
 
           {/* Contact Details (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-4">
-            <h3 className="font-serif text-lg font-bold text-[#F4E8D1]">Contact & Location</h3>
+            <h3 className="font-serif text-lg font-bold text-[#F4E8D1]">Location & Hours</h3>
             <div className="space-y-3 text-xs sm:text-sm text-[#E8C5BE]/80">
               
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-white">{salonData.locationShort}</p>
+                  <p className="font-semibold text-white">{salonData.name}</p>
                   <p>{salonData.addressLine1}</p>
+                  <p>{salonData.addressLine2}</p>
                   <p>{salonData.cityStatePincode}</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>Phone: <a href={`tel:${salonData.phoneRaw}`} className="text-white hover:underline">{salonData.phone}</a></span>
-              </div>
-
-              <div className="flex items-center space-x-3">
                 <Clock className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>Hours: 9:00 AM – 8:00 PM (Daily)</span>
+                <span>Hours: 9:00 AM – 9:00 PM (Open Daily)</span>
               </div>
 
             </div>
@@ -126,8 +122,8 @@ export default function Footer() {
 
         {/* Bottom Copyright Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#E8C5BE]/60 gap-4">
-          <p>© {currentYear} Elements Luxury Salon and Spa. All rights reserved.</p>
-          <p className="text-[11px]">Designed for Elements Luxury Salon & Spa, Chittoor.</p>
+          <p>© {currentYear} {salonData.name}. All rights reserved.</p>
+          <p className="text-[11px]">Ganganapalli Road, Kannaiah Naidu Colony, Chittoor.</p>
         </div>
 
       </div>

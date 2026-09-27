@@ -1,12 +1,12 @@
 import React from 'react';
-import { Star, Phone, MessageCircle, MapPin, Sparkles, ArrowRight } from 'lucide-react';
+import { Star, Navigation, MapPin, Sparkles, ArrowRight } from 'lucide-react';
 import { salonData } from '../data/salonData';
 import heroImage from '../assets/images/hero.png';
 
 export default function Hero() {
-  const handleAppointmentClick = (e) => {
+  const handleLocationClick = (e) => {
     e.preventDefault();
-    const element = document.querySelector('#appointment');
+    const element = document.querySelector('#location');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -28,14 +28,14 @@ export default function Hero() {
               <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
               <span>Chittoor, Andhra Pradesh</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#C58B7E]" />
-              <span className="text-[#4A3E39]">Guru Nagar / KR Palli</span>
+              <span className="text-[#4A3E39]">Ganganapalli Road</span>
             </div>
 
             {/* Main Headline */}
             <div className="space-y-3">
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1A1412] leading-[1.15]">
-                Your Beauty, <br />
-                <span className="italic font-normal text-[#C58B7E]">Elevated.</span>
+                {salonData.name} <br />
+                <span className="italic font-normal text-[#C58B7E]">{salonData.subtitle}</span>
               </h1>
               <p className="text-base sm:text-lg text-[#4A3E39] max-w-xl font-normal leading-relaxed">
                 {salonData.description}
@@ -45,21 +45,23 @@ export default function Hero() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <a
-                href="#appointment"
-                onClick={handleAppointmentClick}
+                href={salonData.mapDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center space-x-3 px-7 py-4 text-sm font-semibold text-white bg-[#1A1412] hover:bg-[#2C221E] rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group border border-[#C5A059]/40"
               >
-                <Sparkles className="w-4 h-4 text-[#C5A059] group-hover:rotate-12 transition-transform" />
-                <span>Book an Appointment</span>
+                <Navigation className="w-4 h-4 text-[#C5A059] group-hover:rotate-12 transition-transform" />
+                <span>Get Directions</span>
                 <ArrowRight className="w-4 h-4 text-white/70 group-hover:translate-x-1 transition-transform" />
               </a>
 
               <a
-                href={`tel:${salonData.phoneRaw}`}
+                href="#location"
+                onClick={handleLocationClick}
                 className="inline-flex items-center justify-center space-x-2 px-7 py-4 text-sm font-semibold text-[#1A1412] bg-[#FAF7F2] hover:bg-[#F4EFE6] rounded-full transition-all border border-[#D8A499]/50 shadow-sm hover:shadow-md"
               >
-                <Phone className="w-4 h-4 text-[#C58B7E]" />
-                <span>Call {salonData.phone}</span>
+                <MapPin className="w-4 h-4 text-[#C58B7E]" />
+                <span>View Location</span>
               </a>
             </div>
 
@@ -75,15 +77,15 @@ export default function Hero() {
                   </div>
                 </div>
                 <span className="text-xs text-[#4A3E39] font-medium mt-0.5">
-                  {salonData.reviewCount} customer ratings
+                  {salonData.reviewCount} on Google
                 </span>
               </div>
 
               <div className="h-9 w-px bg-[#E8C5BE]/40" />
 
               <div className="flex flex-col">
-                <span className="text-sm font-semibold text-[#1A1412]">Premier Salon & Spa</span>
-                <span className="text-xs text-[#4A3E39] font-normal">Hair • Beauty • Bridal Care</span>
+                <span className="text-sm font-semibold text-[#1A1412]">{salonData.name}</span>
+                <span className="text-xs text-[#4A3E39] font-normal">Kannaiah Naidu Colony</span>
               </div>
             </div>
 
@@ -101,7 +103,7 @@ export default function Hero() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] sm:aspect-[16/11] lg:aspect-[4/5] bg-[#F4EFE6]">
                 <img
                   src={heroImage}
-                  alt="Elements Luxury Salon and Spa Interior"
+                  alt={`${salonData.name} Interior & Styling Station`}
                   className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                 />
 
@@ -113,20 +115,20 @@ export default function Hero() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-xs uppercase tracking-widest text-[#C5A059] font-semibold">
-                        Luxury Salon & Spa
+                        {salonData.subtitle}
                       </p>
                       <p className="text-sm font-serif font-bold text-[#1A1412]">
-                        Officers Lane, Opposite Municipal Office
+                        Ganganapalli Road, Near Thenabanda Dargah
                       </p>
                     </div>
                     <a
-                      href={`https://wa.me/${salonData.whatsappNumber}?text=${encodeURIComponent(salonData.whatsappDefaultMessage)}`}
+                      href={salonData.mapDirectionsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 bg-[#25D366] text-white rounded-full hover:opacity-90 transition-opacity shadow-md"
-                      title="Chat on WhatsApp"
+                      className="p-2.5 bg-[#1A1412] text-white rounded-full hover:bg-[#C58B7E] transition-colors shadow-md"
+                      title="Get Directions"
                     >
-                      <MessageCircle className="w-5 h-5 fill-current" />
+                      <Navigation className="w-5 h-5 text-[#C5A059]" />
                     </a>
                   </div>
                 </div>

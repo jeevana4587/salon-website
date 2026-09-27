@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, ShieldCheck, HeartHandshake, MapPin } from 'lucide-react';
+import { Star, HeartHandshake } from 'lucide-react';
 import { salonData } from '../data/salonData';
 import aboutImage from '../assets/images/about.png';
 
@@ -17,7 +17,7 @@ export default function About() {
             <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] bg-[#FDFBF7]">
               <img
                 src={aboutImage}
-                alt="About Elements Luxury Salon and Spa"
+                alt={`About ${salonData.name}`}
                 className="w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A1412]/30 via-transparent to-transparent" />
@@ -30,8 +30,8 @@ export default function About() {
                   <HeartHandshake className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-base font-bold text-[#1A1412]">Welcoming Ambiance</h4>
-                  <p className="text-xs text-[#4A3E39]">Designed for personal care & relaxation.</p>
+                  <h4 className="font-serif text-base font-bold text-[#1A1412]">Relaxing Ambience</h4>
+                  <p className="text-xs text-[#4A3E39]">Clean equipment & comfortable seating.</p>
                 </div>
               </div>
             </div>
@@ -44,17 +44,17 @@ export default function About() {
                 Welcome To Our Salon
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1412] leading-tight">
-                About Elements
+                About {salonData.shortName}
               </h2>
               <div className="w-16 h-0.5 bg-[#C5A059] mt-2" />
             </div>
 
             <p className="text-base sm:text-lg text-[#2C221E] leading-relaxed font-normal">
-              Elements Luxury Salon and Spa brings professional salon and beauty services together in a comfortable and elegant setting in Chittoor.
+              {salonData.name} brings professional haircutting, hair treatments, facial care, and grooming services together on Ganganapalli Road in Kannaiah Naidu Colony, Chittoor.
             </p>
 
             <p className="text-sm sm:text-base text-[#4A3E39] leading-relaxed">
-              From everyday hair and beauty care to specialized bridal services, our salon offers a range of services designed around different occasions and personal styles. Listed with several years of operation in Chittoor, we prioritize client satisfaction and a relaxing experience for every visitor.
+              With a 5.0 Google rating supported by 609 customer reviews, visitors consistently highlight our good service, clean equipment, hygienic environment, attractive interiors, and quality furniture fittings.
             </p>
 
             {/* Verified Statistics Grid */}
@@ -64,7 +64,7 @@ export default function About() {
                   {salonData.reviewCount}
                 </span>
                 <span className="text-xs text-[#4A3E39] font-medium mt-1 block">
-                  Customer Ratings
+                  Google Reviews
                 </span>
               </div>
 
@@ -76,7 +76,7 @@ export default function About() {
                   <Star className="w-4 h-4 text-[#C5A059] fill-current" />
                 </div>
                 <span className="text-xs text-[#4A3E39] font-medium mt-1 block">
-                  Public Rating
+                  Google Rating
                 </span>
               </div>
 
@@ -85,7 +85,7 @@ export default function About() {
                   Chittoor
                 </span>
                 <span className="text-xs text-[#4A3E39] font-medium mt-1 block">
-                  Local Salon & Spa
+                  {salonData.subtitle}
                 </span>
               </div>
             </div>

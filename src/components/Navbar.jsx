@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Calendar, Sparkles } from 'lucide-react';
+import { Menu, X, MapPin, Navigation, Sparkles } from 'lucide-react';
 import { salonData } from '../data/salonData';
 
 export default function Navbar() {
@@ -53,16 +53,16 @@ export default function Navbar() {
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
             className="group flex flex-col focus:outline-none"
-            aria-label="Elements Luxury Salon and Spa Home"
+            aria-label={`${salonData.name} Home`}
           >
             <div className="flex items-center space-x-2">
               <span className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#1A1412] group-hover:text-[#C58B7E] transition-colors">
-                Elements
+                {salonData.shortName}
               </span>
               <Sparkles className="w-4 h-4 text-[#C5A059] opacity-80 group-hover:scale-110 transition-transform" />
             </div>
-            <span className="text-[10px] sm:text-xs font-sans tracking-[0.25em] uppercase text-[#4A3E39] font-semibold -mt-1">
-              Luxury Salon & Spa
+            <span className="text-[10px] sm:text-xs font-sans tracking-[0.2em] uppercase text-[#4A3E39] font-semibold -mt-1">
+              {salonData.subtitle}
             </span>
           </a>
 
@@ -83,32 +83,36 @@ export default function Navbar() {
           {/* Header Action Buttons */}
           <div className="hidden sm:flex items-center space-x-3">
             <a
-              href={`tel:${salonData.phoneRaw}`}
-              className="inline-flex items-center space-x-2 px-3 py-2 text-xs font-semibold text-[#1A1412] bg-[#F4EFE6] hover:bg-[#E8C5BE]/30 rounded-full transition-colors border border-[#D8A499]/30"
-              title={`Call ${salonData.phone}`}
+              href="#location"
+              onClick={(e) => handleNavClick(e, '#location')}
+              className="inline-flex items-center space-x-2 px-3.5 py-2 text-xs font-semibold text-[#1A1412] bg-[#F4EFE6] hover:bg-[#E8C5BE]/30 rounded-full transition-colors border border-[#D8A499]/30"
+              title="Visit Location"
             >
-              <Phone className="w-3.5 h-3.5 text-[#C58B7E]" />
-              <span>{salonData.phone}</span>
+              <MapPin className="w-3.5 h-3.5 text-[#C58B7E]" />
+              <span>Visit Us</span>
             </a>
 
             <a
-              href="#appointment"
-              onClick={(e) => handleNavClick(e, '#appointment')}
+              href={salonData.mapDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-4 py-2 text-xs font-semibold text-white bg-[#1A1412] hover:bg-[#2C221E] rounded-full transition-all shadow-sm hover:shadow-md border border-[#C5A059]/30"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>Book Appointment</span>
+              <Navigation className="w-3.5 h-3.5 text-[#C5A059]" />
+              <span>Get Directions</span>
             </a>
           </div>
 
           {/* Mobile Menu Toggle Button */}
           <div className="flex md:hidden items-center space-x-2">
             <a
-              href={`tel:${salonData.phoneRaw}`}
+              href={salonData.mapDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 text-[#1A1412] bg-[#F4EFE6] rounded-full sm:hidden"
-              aria-label="Call salon"
+              aria-label="Get Directions"
             >
-              <Phone className="w-4 h-4 text-[#C58B7E]" />
+              <Navigation className="w-4 h-4 text-[#C58B7E]" />
             </a>
 
             <button
@@ -143,19 +147,22 @@ export default function Navbar() {
 
           <div className="mt-5 pt-4 border-t border-[#E8C5BE]/30 flex flex-col space-y-3">
             <a
-              href="#appointment"
-              onClick={(e) => handleNavClick(e, '#appointment')}
-              className="w-full text-center py-3 text-sm font-semibold text-white bg-[#1A1412] hover:bg-[#2C221E] rounded-xl shadow-sm"
+              href={salonData.mapDirectionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-center py-3 text-sm font-semibold text-white bg-[#1A1412] hover:bg-[#2C221E] rounded-xl shadow-sm flex items-center justify-center space-x-2"
             >
-              Book Appointment
+              <Navigation className="w-4 h-4 text-[#C5A059]" />
+              <span>Get Directions</span>
             </a>
 
             <a
-              href={`tel:${salonData.phoneRaw}`}
+              href="#location"
+              onClick={(e) => handleNavClick(e, '#location')}
               className="w-full text-center py-2.5 text-sm font-semibold text-[#1A1412] bg-[#F4EFE6] hover:bg-[#E8C5BE]/40 rounded-xl border border-[#D8A499]/40 flex items-center justify-center space-x-2"
             >
-              <Phone className="w-4 h-4 text-[#C58B7E]" />
-              <span>Call Us: {salonData.phone}</span>
+              <MapPin className="w-4 h-4 text-[#C58B7E]" />
+              <span>View Location & Hours</span>
             </a>
           </div>
         </div>

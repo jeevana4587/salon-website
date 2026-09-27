@@ -19,7 +19,7 @@ export default function WhyChooseUs() {
             The Salon Experience
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1412]">
-            Why Experience Elements?
+            Why Choose {salonData.shortName}?
           </h2>
           <div className="w-16 h-0.5 bg-[#C5A059] mx-auto mt-2" />
         </div>

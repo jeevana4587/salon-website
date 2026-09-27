@@ -30,7 +30,7 @@ export default function Reviews() {
               <span className="block text-xs font-bold text-[#1A1412] uppercase tracking-wider">
                 {salonData.reviewCount} Public Ratings
               </span>
-              <span className="text-[11px] text-[#4A3E39]">Verified Online Listing</span>
+              <span className="text-[11px] text-[#4A3E39]">Verified Google Profile</span>
             </div>
           </div>
         </div>

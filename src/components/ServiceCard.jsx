@@ -1,11 +1,8 @@
 import React from 'react';
-import { ArrowUpRight, MessageCircle } from 'lucide-react';
+import { ArrowUpRight, Navigation } from 'lucide-react';
 import { salonData } from '../data/salonData';
 
 export default function ServiceCard({ service }) {
-  const whatsappServiceMessage = `Hi, I would like to inquire about booking an appointment for ${service.name} at Elements Luxury Salon and Spa.`;
-  const whatsappUrl = `https://wa.me/${salonData.whatsappNumber}?text=${encodeURIComponent(whatsappServiceMessage)}`;
-
   return (
     <div className="luxury-card rounded-2xl overflow-hidden flex flex-col h-full group bg-white">
       
@@ -42,19 +39,19 @@ export default function ServiceCard({ service }) {
           <div>
             <span className="text-xs font-medium text-[#4A3E39] block">Pricing</span>
             <span className="text-xs font-semibold text-[#C5A059]">
-              {service.price ? service.price : service.priceLabel || 'Call for Pricing'}
+              {service.price ? service.price : service.priceLabel || 'Available at Salon'}
             </span>
           </div>
 
           <a
-            href={whatsappUrl}
+            href={salonData.mapDirectionsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-[#1A1412] bg-[#F4EFE6] hover:bg-[#1A1412] hover:text-white rounded-xl transition-all border border-[#D8A499]/30 group/btn"
-            title={`Book ${service.name} via WhatsApp`}
+            title={`Visit salon for ${service.name}`}
           >
-            <MessageCircle className="w-3.5 h-3.5 text-[#25D366] group-hover/btn:text-white transition-colors" />
-            <span>Inquire</span>
+            <Navigation className="w-3.5 h-3.5 text-[#C5A059] group-hover/btn:text-white transition-colors" />
+            <span>Visit Salon</span>
             <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
           </a>
         </div>

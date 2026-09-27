@@ -1,11 +1,9 @@
 import React from 'react';
-import { MapPin, Phone, MessageCircle, Navigation, Building2, Sparkles } from 'lucide-react';
+import { MapPin, Navigation, Building2, Clock } from 'lucide-react';
 import { salonData } from '../data/salonData';
 import OpeningHours from './OpeningHours';
 
 export default function Location() {
-  const whatsappUrl = `https://wa.me/${salonData.whatsappNumber}?text=${encodeURIComponent(salonData.whatsappDefaultMessage)}`;
-
   return (
     <section id="location" className="py-16 sm:py-24 bg-[#FDFBF7] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,7 +20,7 @@ export default function Location() {
           </h2>
 
           <p className="text-xs sm:text-sm text-[#4A3E39] max-w-xl mx-auto font-normal">
-            Find us easily in Guru Nagar Colony / KR Palli, Chittoor.
+            Find us on Ganganapalli Road, Kannaiah Naidu Colony near Thenabanda Dargah in Chittoor.
           </p>
         </div>
 
@@ -54,17 +52,12 @@ export default function Location() {
                   </div>
                 </div>
 
-                {/* Telephone */}
+                {/* Landmark info */}
                 <div className="flex items-center space-x-3 text-[#2C221E] pt-2">
-                  <Phone className="w-5 h-5 text-[#C58B7E] shrink-0" />
+                  <MapPin className="w-5 h-5 text-[#C58B7E] shrink-0" />
                   <div className="text-xs sm:text-sm">
-                    <span className="text-[#4A3E39] block text-[11px]">Phone Consultation:</span>
-                    <a
-                      href={`tel:${salonData.phoneRaw}`}
-                      className="font-bold text-[#1A1412] hover:text-[#C58B7E] transition-colors"
-                    >
-                      {salonData.phone}
-                    </a>
+                    <span className="text-[#4A3E39] block text-[11px]">Nearby Landmark:</span>
+                    <span className="font-bold text-[#1A1412]">{salonData.landmark}</span>
                   </div>
                 </div>
               </div>
@@ -77,28 +70,10 @@ export default function Location() {
                 href={salonData.mapDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-6 py-3 text-xs sm:text-sm font-semibold text-white bg-[#1A1412] hover:bg-[#2C221E] rounded-full transition-all shadow-md hover:shadow-lg"
+                className="inline-flex items-center space-x-2 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white bg-[#1A1412] hover:bg-[#2C221E] rounded-full transition-all shadow-md hover:shadow-lg"
               >
                 <Navigation className="w-4 h-4 text-[#C5A059]" />
-                <span>Get Directions</span>
-              </a>
-
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-5 py-3 text-xs sm:text-sm font-semibold text-white bg-[#25D366] hover:bg-[#20ba5a] rounded-full transition-all shadow-sm"
-              >
-                <MessageCircle className="w-4 h-4 fill-current" />
-                <span>WhatsApp Us</span>
-              </a>
-
-              <a
-                href={`tel:${salonData.phoneRaw}`}
-                className="inline-flex items-center space-x-2 px-5 py-3 text-xs sm:text-sm font-semibold text-[#1A1412] bg-[#F4EFE6] hover:bg-[#E8C5BE]/40 rounded-full transition-all border border-[#D8A499]/30"
-              >
-                <Phone className="w-4 h-4 text-[#C58B7E]" />
-                <span>Call Now</span>
+                <span>Get Directions on Google Maps</span>
               </a>
 
             </div>
@@ -115,7 +90,7 @@ export default function Location() {
         {/* Embedded Google Map */}
         <div className="rounded-3xl overflow-hidden shadow-md border border-[#E8C5BE]/40 bg-[#F4EFE6] aspect-[16/9] sm:aspect-[21/9] max-h-[400px]">
           <iframe
-            title="Elements Luxury Salon and Spa Location Map"
+            title={`${salonData.name} Location Map`}
             src={salonData.mapEmbedIframeUrl}
             width="100%"
             height="100%"

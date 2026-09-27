@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { salonData } from '../data/salonData';
 import ServiceCard from './ServiceCard';
-import { Sparkles, Calendar } from 'lucide-react';
+import { Sparkles, Navigation } from 'lucide-react';
 
 export default function Services() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -22,11 +22,11 @@ export default function Services() {
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1412]">
-            Services Designed Around You
+            Services & Grooming Care
           </h2>
 
           <p className="text-sm sm:text-base text-[#4A3E39] max-w-2xl mx-auto font-normal">
-            From everyday beauty care to special occasions, explore our salon and spa services.
+            Explore haircutting, hair treatments, facial care, and grooming offerings at 6th Face Salon.
           </p>
 
           {/* Category Filter Tabs */}
@@ -61,23 +61,21 @@ export default function Services() {
         <div className="mt-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-[#1A1412] to-[#2C221E] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-[#C5A059]/30 text-left">
           <div className="space-y-1">
             <h3 className="font-serif text-2xl font-bold text-[#F4E8D1]">
-              Looking for a custom beauty package?
+              Visit 6th Face Salon on Ganganapalli Road
             </h3>
             <p className="text-xs sm:text-sm text-[#E8C5BE]/90 font-light">
-              Contact Elements Luxury Salon and Spa for bridal trials, special event styling, and personalized treatments.
+              Explore our full range of hair treatments, skin care, and grooming services in Chittoor. Pricing available at the salon.
             </p>
           </div>
 
           <a
-            href="#appointment"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#appointment')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            href={salonData.mapDirectionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 px-6 py-3.5 text-xs sm:text-sm font-semibold text-[#1A1412] bg-[#F4E8D1] hover:bg-white rounded-full transition-colors shrink-0 shadow-md"
           >
-            <Calendar className="w-4 h-4 text-[#C5A059]" />
-            <span>Book Your Appointment</span>
+            <Navigation className="w-4 h-4 text-[#C5A059]" />
+            <span>Get Directions to Salon</span>
           </a>
         </div>
 
